@@ -51,3 +51,25 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+## Todats discussion
+Backend:
+Java
+SQL DB
+
+API> username,pwd>encrypted>saved in DB
+
+
+HRMS portal
+>> orgs
+>>>>roles
+>>>>>>employess
+
+
+login page:
+username,pwd
+
+Org Register:
+Org Name,
+Org email,username>pwd>org>
