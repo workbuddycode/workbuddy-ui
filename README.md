@@ -1,6 +1,5 @@
 # workbuddy-ui
 
-test comit
 This is a React application built with TypeScript. It serves as a template for creating scalable and maintainable web applications.
 
 ## Features
