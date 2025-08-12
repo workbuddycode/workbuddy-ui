@@ -26,7 +26,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h3 className="mb-4">Login Screen for WorkBuddy</h3>
+      <h3 className="mb-4">Login to WorkBuddy</h3>
        <FormContainer>
       <form onSubmit={handleSubmit(onSubmit)} className="shadow p-4 rounded bg-light">
         <TextInput label="Email Address" name="email" type="email" register={register} error={errors.email?.message} />
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
           <a href="/forgot-password">Forgot Password?</a>
         </div>
       </form>
-      ǚ</FormContainer>
+      </FormContainer>
     </div>
   );
 };

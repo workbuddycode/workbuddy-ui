@@ -9,7 +9,8 @@ const Footer: React.FC = () => {
         bottom: 0,
         left: 0,
         width: "100%",
-        zIndex: 1030
+        zIndex: 1030,
+        marginTop: "0px",
       }}
     >
       <small className="text-muted">

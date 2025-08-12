@@ -6,7 +6,7 @@ interface FormContainerProps {
 
 const FormContainer: React.FC<FormContainerProps> = ({ children }) => {
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <div className="form-container d-flex justify-content-center align-items-center min-vh-100">
       <div className="w-50"> {/* 50% width */}
         {children}
       </div>
