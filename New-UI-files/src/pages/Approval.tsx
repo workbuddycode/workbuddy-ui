@@ -6,7 +6,8 @@ const Approval: React.FC = () => {
     "Logo Uploaded",
     "Key Contacts Added",
     "GST / Registration Verified",
-    "Services Selected"
+    "Services Selected",
+    "Payment Details"
   ];
 
   return (
