@@ -1,12 +1,16 @@
 import React from "react";
 import { Dropdown, OverlayTrigger, Popover } from "react-bootstrap";
 import { List } from "react-bootstrap-icons";
+import { useLocation } from "react-router-dom";
 
 interface HeaderProps {
   onMenuClick?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const location = useLocation();
+  const hideRightActions = ["/","/login", "/register","/onboard/client"].includes(location.pathname);
+
   const activitiesPopover = (
     <Popover id="popover-activities">
       <Popover.Header as="h3">Recent Activities</Popover.Header>
@@ -46,26 +50,28 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         </a>
       </div>
 
-      {/* Right: Notifications, Activities, Avatar */}
-      <div className="ms-auto d-flex align-items-center gap-3">
-        <OverlayTrigger trigger="click" placement="bottom" overlay={activitiesPopover} rootClose>
-          <button className="btn btn-outline-primary btn-sm">Activities</button>
-        </OverlayTrigger>
+      {/* Right: Hide on Login/Register */}
+      {!hideRightActions && (
+        <div className="ms-auto d-flex align-items-center gap-3">
+          <OverlayTrigger trigger="click" placement="bottom" overlay={activitiesPopover} rootClose>
+            <button className="btn btn-outline-primary btn-sm">Activities</button>
+          </OverlayTrigger>
 
-        <OverlayTrigger trigger="click" placement="bottom" overlay={notificationsPopover} rootClose>
-          <button className="btn btn-outline-warning btn-sm">Notifications</button>
-        </OverlayTrigger>
+          <OverlayTrigger trigger="click" placement="bottom" overlay={notificationsPopover} rootClose>
+            <button className="btn btn-outline-warning btn-sm">Notifications</button>
+          </OverlayTrigger>
 
-        <Dropdown align="end">
-          <Dropdown.Toggle variant="light" className="d-flex align-items-center">
-            Admin
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-            <Dropdown.Item href="/logout">Logout</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
+          <Dropdown align="end">
+            <Dropdown.Toggle variant="light" className="d-flex align-items-center">
+              Admin
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+              <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      )}
     </nav>
   );
 };
