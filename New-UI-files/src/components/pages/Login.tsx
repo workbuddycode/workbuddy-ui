@@ -2,8 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextInput from "../components/form/TextInput";
-import "../assets/css/styles.css"; // Keep your global styles
+import TextInput from "../form-controls/TextInput";
 
 interface LoginForm {
   email: string;
