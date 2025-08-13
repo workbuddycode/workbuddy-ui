@@ -13,7 +13,7 @@ describe("FileInput", () => {
   it("renders label and input", () => {
     render(<FileInput label="Upload File" name="file" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
       throw new Error("Function not implemented.");
-    } }  />);
+    }} />);
     expect(screen.getByLabelText(/upload file/i)).toBeInTheDocument();
   });
 
@@ -24,7 +24,7 @@ describe("FileInput", () => {
         name="file"
         error="This field is required" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
           throw new Error("Function not implemented.");
-        } }      />
+        }} />
     );
     const input = screen.getByLabelText(/upload file/i);
     expect(input).toHaveClass("is-invalid");
@@ -34,7 +34,7 @@ describe("FileInput", () => {
   it("shows image preview when an image is uploaded", async () => {
     render(<FileInput label="Upload File" name="file" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
       throw new Error("Function not implemented.");
-    } }  />);
+    }} />);
 
     const input = screen.getByLabelText(/upload file/i) as HTMLInputElement;
     const file = new File(["dummy"], "test.png", { type: "image/png" });
@@ -49,7 +49,7 @@ describe("FileInput", () => {
   it("does not show preview for non-image file", async () => {
     render(<FileInput label="Upload File" name="file" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
       throw new Error("Function not implemented.");
-    } }  />);
+    }} />);
 
     const input = screen.getByLabelText(/upload file/i) as HTMLInputElement;
     const file = new File(["dummy"], "test.pdf", { type: "application/pdf" });

@@ -18,7 +18,7 @@ describe("SelectInput", () => {
         name={name}
         options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
           throw new Error("Function not implemented.");
-        } }      />
+        }} />
     );
 
     // Label
@@ -40,7 +40,7 @@ describe("SelectInput", () => {
         name={name}
         options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
           throw new Error("Function not implemented.");
-        } }      />
+        }} />
     );
 
     expect(mockRegister).toHaveBeenCalledWith(name);
@@ -53,7 +53,7 @@ describe("SelectInput", () => {
         name={name}
         options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
           throw new Error("Function not implemented.");
-        } }      />
+        }} />
     );
 
     const select = screen.getByLabelText(label) as HTMLSelectElement;
@@ -69,7 +69,7 @@ describe("SelectInput", () => {
         options={options}
         error="This field is required" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
           throw new Error("Function not implemented.");
-        } }      />
+        }} />
     );
 
     expect(screen.getByText(/this field is required/i)).toBeInTheDocument();

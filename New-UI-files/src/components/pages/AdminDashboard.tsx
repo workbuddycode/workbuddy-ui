@@ -64,7 +64,7 @@ const AdminDashboard: React.FC = () => {
               placeholder="Search..."
               className="mb-2"
               value={searchActive}
-              onChange={(e:any) => setSearchActive(e.target.value)}
+              onChange={(e: any) => setSearchActive(e.target.value)}
             />
             <Table bordered hover responsive>
               <thead>
@@ -96,7 +96,7 @@ const AdminDashboard: React.FC = () => {
               placeholder="Search..."
               className="mb-2"
               value={searchPending}
-              onChange={(e:any) => setSearchPending(e.target.value)}
+              onChange={(e: any) => setSearchPending(e.target.value)}
             />
             <Table bordered hover responsive>
               <thead>

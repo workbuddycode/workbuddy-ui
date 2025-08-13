@@ -58,11 +58,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
         <Dropdown align="end">
           <Dropdown.Toggle variant="light" className="d-flex align-items-center">
-            {/* <img
-              src="https://via.placeholder.com/30"
-              alt="Avatar"
-              className="rounded-circle me-2"
-            /> */}
             Admin
           </Dropdown.Toggle>
           <Dropdown.Menu>

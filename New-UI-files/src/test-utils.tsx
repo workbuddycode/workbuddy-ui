@@ -11,7 +11,7 @@ interface FormWrapperProps {
 const FormWrapper: React.FC<FormWrapperProps> = ({
   children,
   defaultValues = {},
-  onSubmit = () => {}
+  onSubmit = () => { }
 }) => {
   const methods = useForm({ defaultValues });
 
@@ -21,8 +21,8 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
         {React.Children.map(children, (child) =>
           React.isValidElement(child)
             ? React.cloneElement(child as React.ReactElement<any>, {
-                register: methods.register,
-              })
+              register: methods.register,
+            })
             : child
         )}
       </form>
