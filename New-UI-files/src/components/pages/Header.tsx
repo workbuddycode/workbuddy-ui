@@ -2,6 +2,7 @@ import React from "react";
 import { Dropdown, OverlayTrigger, Popover } from "react-bootstrap";
 import { List } from "react-bootstrap-icons";
 import { useLocation } from "react-router-dom";
+import logo from "../../assets/images/logo.png"; 
 
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -45,8 +46,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         >
           <List size={20} />
         </button>
-        <a className="navbar-brand fw-bold" href="/">
-          WorkBuddy
+        <a className="navbar-brand fw-bold d-flex align-items-center" href="/">
+          <img
+            src={logo}
+            alt="WorkBuddyHR Logo"
+            style={{ height: "40px", marginRight: "10px" }}
+          />
+          WorkBuddyHR
         </a>
       </div>
 
