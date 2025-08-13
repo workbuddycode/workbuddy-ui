@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SelectInput from "./SelectInput";
+import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form";
 
 // Mock register function from react-hook-form
 const mockRegister = jest.fn(() => ({}));
@@ -15,9 +16,9 @@ describe("SelectInput", () => {
       <SelectInput
         label={label}
         name={name}
-        options={options}
-        register={mockRegister}
-      />
+        options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     // Label
@@ -37,9 +38,9 @@ describe("SelectInput", () => {
       <SelectInput
         label={label}
         name={name}
-        options={options}
-        register={mockRegister}
-      />
+        options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     expect(mockRegister).toHaveBeenCalledWith(name);
@@ -50,9 +51,9 @@ describe("SelectInput", () => {
       <SelectInput
         label={label}
         name={name}
-        options={options}
-        register={mockRegister}
-      />
+        options={options} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     const select = screen.getByLabelText(label) as HTMLSelectElement;
@@ -66,9 +67,9 @@ describe("SelectInput", () => {
         label={label}
         name={name}
         options={options}
-        register={mockRegister}
-        error="This field is required"
-      />
+        error="This field is required" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     expect(screen.getByText(/this field is required/i)).toBeInTheDocument();

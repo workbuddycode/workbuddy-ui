@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TextAreaInput from "./TextAreaInput";
+import { RegisterOptions, UseFormRegisterReturn } from "react-hook-form";
 
 describe("TextAreaInput", () => {
   const mockRegister = jest.fn(() => ({
@@ -13,9 +14,9 @@ describe("TextAreaInput", () => {
     render(
       <TextAreaInput
         label="Description"
-        name="description"
-        register={mockRegister}
-      />
+        name="description" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     expect(screen.getByLabelText(/description/i)).toBeInTheDocument();
@@ -27,9 +28,9 @@ describe("TextAreaInput", () => {
         label="Comments"
         name="comments"
         placeholder="Enter your comments"
-        rows={5}
-        register={mockRegister}
-      />
+        rows={5} register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     const textarea = screen.getByLabelText(/comments/i);
@@ -41,9 +42,9 @@ describe("TextAreaInput", () => {
     render(
       <TextAreaInput
         label="Feedback"
-        name="feedback"
-        register={mockRegister}
-      />
+        name="feedback" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     const textarea = screen.getByLabelText(/feedback/i) as HTMLTextAreaElement;
@@ -56,9 +57,9 @@ describe("TextAreaInput", () => {
       <TextAreaInput
         label="Description"
         name="description"
-        register={mockRegister}
-        error="This field is required"
-      />
+        error="This field is required" register={function <TFieldName extends string = string>(name: TFieldName, options?: RegisterOptions<any, TFieldName> | undefined): UseFormRegisterReturn<TFieldName> {
+          throw new Error("Function not implemented.");
+        } }      />
     );
 
     expect(screen.getByText(/this field is required/i)).toBeInTheDocument();

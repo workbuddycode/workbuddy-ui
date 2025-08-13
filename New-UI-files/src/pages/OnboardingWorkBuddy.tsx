@@ -37,21 +37,21 @@ const OnboardingWorkBuddy: React.FC = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h3 className="mb-4">Onboarding Registration (WorkBuddy)</h3>
-      <FormContainer>
-      <form onSubmit={handleSubmit(onSubmit)} className="shadow p-4 rounded bg-light">
-        <TextInput label="Organisation Name" name="orgName" register={register} error={errors.orgName?.message} />
-        <TextInput label="Contact Person Name" name="contactName" register={register} error={errors.contactName?.message} />
-        <TextInput label="Contact Email" name="contactEmail" type="email" register={register} error={errors.contactEmail?.message} />
-        <TextInput label="Contact Number" name="contactNumber" register={register} error={errors.contactNumber?.message} />
-        <TextInput label="Industry Type" name="industryType" register={register} error={errors.industryType?.message} />
-        <SelectInput label="Company Size" name="companySize" options={["1-50", "51-200", "201-1000", "1000+"]} register={register} error={errors.companySize?.message} />
-        <TextAreaInput label="Address" name="address" register={register} error={errors.address?.message} />
+    <div className="onboarding-page">
+      <div className="form-card shadow p-4 rounded">
+        <h3 className="mb-4">Onboarding Registration (WorkBuddy)</h3>
+        <form onSubmit={handleSubmit(onSubmit)} className="shadow p-4 rounded bg-light">
+          <TextInput label="Organisation Name" name="orgName" register={register} error={errors.orgName?.message} />
+          <TextInput label="Contact Person Name" name="contactName" register={register} error={errors.contactName?.message} />
+          <TextInput label="Contact Email" name="contactEmail" type="email" register={register} error={errors.contactEmail?.message} />
+          <TextInput label="Contact Number" name="contactNumber" register={register} error={errors.contactNumber?.message} />
+          <TextInput label="Industry Type" name="industryType" register={register} error={errors.industryType?.message} />
+          <SelectInput label="Company Size" name="companySize" options={["1-50", "51-200", "201-1000", "1000+"]} register={register} error={errors.companySize?.message} />
+          <TextAreaInput label="Address" name="address" register={register} error={errors.address?.message} />
 
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-      </FormContainer>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };

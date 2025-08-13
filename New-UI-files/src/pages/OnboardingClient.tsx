@@ -40,24 +40,24 @@ const OnboardingClient: React.FC = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h3 className="mb-4">Onboarding Registration (Client)</h3>
-      <FormContainer>
-      <form onSubmit={handleSubmit(onSubmit)} className="shadow p-4 rounded bg-light">
-        
-        <TextInput label="Additional Contact Person" name="additionalContactPerson" register={register} error={errors.additionalContactPerson?.message} />
-        <TextInput label="Additional Contact Email" name="additionalContactEmail" type="email" register={register} error={errors.additionalContactEmail?.message} />
-        <TextInput label="Additional Contact Number" name="additionalContactNumber" register={register} error={errors.additionalContactNumber?.message} />
-        <TextInput label="GST No / Registration No" name="gst" register={register} error={errors.gst?.message} />
-        
-        <TextAreaInput label="Services to Opt For" name="servicesToOpt" register={register} error={errors.servicesToOpt?.message} />
-        
-        <FileInput label="Logo Upload" name="logo" register={register} error={errors.logo?.message} />
-        <FileInput label="Hero Image Upload" name="heroImage" register={register} error={errors.heroImage?.message} />
+    <div className="onboarding-page">
+      <div className="form-card shadow p-4 rounded">
+        <h3 className="mb-4">Onboarding Registration (Client)</h3>
+        <form onSubmit={handleSubmit(onSubmit)} className="shadow p-4 rounded bg-light">
 
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-      </FormContainer>
+          <TextInput label="Additional Contact Person" name="additionalContactPerson" register={register} error={errors.additionalContactPerson?.message} />
+          <TextInput label="Additional Contact Email" name="additionalContactEmail" type="email" register={register} error={errors.additionalContactEmail?.message} />
+          <TextInput label="Additional Contact Number" name="additionalContactNumber" register={register} error={errors.additionalContactNumber?.message} />
+          <TextInput label="GST No / Registration No" name="gst" register={register} error={errors.gst?.message} />
+
+          <TextAreaInput label="Services to Opt For" name="servicesToOpt" register={register} error={errors.servicesToOpt?.message} />
+
+          <FileInput label="Logo Upload" name="logo" register={register} error={errors.logo?.message} />
+          <FileInput label="Hero Image Upload" name="heroImage" register={register} error={errors.heroImage?.message} />
+
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
