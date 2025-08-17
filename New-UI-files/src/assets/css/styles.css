@@ -1,0 +1,39 @@
+.login-page,
+.registration-page,
+.onboarding-page {
+  min-height: 100vh;
+  background-image: url('../images/BackgroundMenuItem.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Make react-select match Bootstrap form-control */
+.react-select-container {
+  font-size: 0.9rem;
+}
+
+.react-select__control {
+  border-radius: 0.375rem !important; /* match Bootstrap rounded corners */
+}
+
+.react-select__placeholder {
+  color: #6c757d !important; /* Bootstrap muted text */
+}
+
+.react-select__multi-value {
+  border-radius: 0.25rem;
+}
