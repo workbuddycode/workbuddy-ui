@@ -6,7 +6,6 @@ describe("OnboardingClient Form", () => {
   it("renders required fields", () => {
     render(<OnboardingClient />);
     expect(screen.getByLabelText(/additional contact person/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/gst/i)).toBeInTheDocument();
   });
 
   it("shows image preview when logo file is uploaded", async () => {

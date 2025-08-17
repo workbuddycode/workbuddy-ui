@@ -5,6 +5,7 @@ import * as yup from "yup";
 import TextInput from "../form-controls/TextInput";
 import TextAreaInput from "../form-controls/TextAreaInput";
 import SelectInput from "../form-controls/SelectInput";
+import MultiSelectInput from "../form-controls/MultiSelectInput";
 
 interface WorkBuddyForm {
   orgName: string;
@@ -13,6 +14,8 @@ interface WorkBuddyForm {
   contactNumber: string;
   industryType: string;
   companySize: string;
+  services: { value: string; label: string }[]; // multi-select
+  gst: string;
   address: string;
 }
 
@@ -23,11 +26,13 @@ const schema = yup.object().shape({
   contactNumber: yup.string().matches(/^[0-9]{10}$/, "Must be 10 digits").required(),
   industryType: yup.string().required(),
   companySize: yup.string().required(),
+  services: yup.array().min(1, "Select at least one service").required(),
+  gst: yup.string().required("GST is required"),
   address: yup.string().required()
 });
 
 const OnboardingWorkBuddy: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<WorkBuddyForm>({
+  const { register, handleSubmit, control, formState: { errors } } = useForm<WorkBuddyForm>({
     resolver: yupResolver(schema)
   });
 
@@ -45,7 +50,25 @@ const OnboardingWorkBuddy: React.FC = () => {
           <TextInput label="Contact Email" name="contactEmail" type="email" register={register} error={errors.contactEmail?.message} />
           <TextInput label="Contact Number" name="contactNumber" register={register} error={errors.contactNumber?.message} />
           <TextInput label="Industry Type" name="industryType" register={register} error={errors.industryType?.message} />
-          <SelectInput label="Company Size" name="companySize" options={["1-50", "51-200", "201-1000", "1000+"]} register={register} error={errors.companySize?.message} />
+          <SelectInput
+            label="Company Size"
+            name="companySize"
+            options={["1-50", "51-200", "201-1000", "1000+"]}
+            register={register}
+            error={errors.companySize?.message}
+          />
+          <MultiSelectInput
+            label="Services to Opt"
+            name="services"
+            options={[
+              { value: "attendance", label: "Attendance Management" },
+              { value: "leave", label: "Leave Management" },
+              { value: "payroll", label: "Payroll Management" },
+            ]}
+            control={control}
+            error={errors.services?.message as string}
+          />
+          <TextInput label="GST No/ Regn No" name="gst" register={register} error={errors.gst?.message} />
           <TextAreaInput label="Address" name="address" register={register} error={errors.address?.message} />
 
           <button type="submit" className="btn btn-primary">Submit</button>

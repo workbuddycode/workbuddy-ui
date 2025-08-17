@@ -14,8 +14,6 @@ const schema = yup.object({
     .string()
     .matches(/^[0-9]{10}$/, "Must be 10 digits")
     .required("Contact Number is required"),
-  gst: yup.string().required("GST is required"),
-  servicesToOpt: yup.string().required("Please enter services"),
   logo: yup
     .mixed<FileList>()
     .test("required", "Logo is required", (value) => value && value.length > 0)
@@ -47,10 +45,6 @@ const OnboardingClient: React.FC = () => {
           <TextInput label="Additional Contact Person" name="additionalContactPerson" register={register} error={errors.additionalContactPerson?.message} />
           <TextInput label="Additional Contact Email" name="additionalContactEmail" type="email" register={register} error={errors.additionalContactEmail?.message} />
           <TextInput label="Additional Contact Number" name="additionalContactNumber" register={register} error={errors.additionalContactNumber?.message} />
-          <TextInput label="GST No / Registration No" name="gst" register={register} error={errors.gst?.message} />
-
-          <TextAreaInput label="Services to Opt For" name="servicesToOpt" register={register} error={errors.servicesToOpt?.message} />
-
           <FileInput label="Logo Upload" name="logo" register={register} error={errors.logo?.message} />
           <FileInput label="Hero Image Upload" name="heroImage" register={register} error={errors.heroImage?.message} />
 
