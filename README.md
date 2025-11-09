@@ -1,6 +1,5 @@
 # workbuddy-ui
 
-
 This is a React application built with TypeScript. It serves as a template for creating scalable and maintainable web applications.
 
 ## Features
@@ -34,15 +33,70 @@ To get started with this project, follow these steps:
 
 ## Project Structure
 
-<!-- - `src/`: Contains the source code for the application.
-  - `App.tsx`: The main application component.
-  - `index.tsx`: The entry point of the application.
-  - `components/`: Contains reusable components.
-  - `types/`: Contains TypeScript types and interfaces.
-- `public/`: Contains static files.
-  - `index.html`: The main HTML file.
-- `tsconfig.json`: TypeScript configuration file.
-- `package.json`: NPM configuration file. -->
+workbuddy-ui/
+├── 📂 public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── images/                  # Public images (backgrounds, logos, etc.)
+│
+├── 📂 src/
+│   ├── 📂 assets/
+│   │   ├── 📂 css/
+│   │   │   └── styles.css       # Global styles
+│   │   └── 📂 images/           # Imported images for components
+│   │
+│   ├── 📂 components/
+│   │   ├── 📂 form-controls/              # Reusable form controls
+│   │   │   ├── TextInput.tsx
+│   │   │   ├── TextAreaInput.tsx
+│   │   │   ├── SelectInput.tsx
+│   │   │   ├── FileInput.tsx
+│   │   │   └── FormContainer.tsx
+│   │   │
+│   │   │
+│   │   │
+│   │   ├──  📂 pages/                 # Main application pages
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Login.tsx
+│   │   │   ├── Registration.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── OnboardingWorkBuddy.tsx
+│   │   │   ├── OnboardingClient.tsx
+│   │   │   └── Approval.tsx
+│   │   │
+│   │   │ 
+│   │   │ 
+│   │   │ 
+│   │   │ 
+│   │   │ 
+│   │ 
+│   │ 
+│   │ 
+│   ├── 📂 tests/                 # Component & page test cases
+│   │   ├── components/
+│   │   │   ├── TextInput.test.tsx
+│   │   │   ├── TextAreaInput.test.tsx
+│   │   │   ├── SelectInput.test.tsx
+│   │   │   ├── FileInput.test.tsx
+│   │   │   └── FormContainer.test.tsx
+│   │   ├── pages/
+│   │   │   ├── Login.test.tsx
+│   │   │   ├── Registration.test.tsx
+│   │   │   ├── OnboardingClient.test.tsx
+│   │   │   └── Approval.test.tsx
+│   │
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+│   ├── routes.tsx               # App routing
+│   └── setupTests.ts            # Jest setup (RTL + jest-dom)
+│
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── README.md
+
 
 ## Contributing
 
