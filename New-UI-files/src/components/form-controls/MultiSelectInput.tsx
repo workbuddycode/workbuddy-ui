@@ -77,6 +77,14 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
             classNamePrefix="react-select"
             className={`react-select-container ${error ? "is-invalid" : ""}`}
             styles={customStyles}
+            value={
+              field.value
+                ? options.filter((option) => field.value.includes(option.value))
+                : []
+            }
+            onChange={(selectedOptions) => {
+              field.onChange(selectedOptions.map((option) => option.value));
+            }}
           />
         )}
       />
