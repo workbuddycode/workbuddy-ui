@@ -40,57 +40,59 @@ workbuddy-ui/
 │   └── images/                  # Public images (backgrounds, logos, etc.)
 │
 ├── 📂 src/
+│   ├── 📂 api/
+│   │   └── RestApi.ts           # API service layer
 │   ├── 📂 assets/
 │   │   ├── 📂 css/
 │   │   │   └── styles.css       # Global styles
 │   │   └── 📂 images/           # Imported images for components
-│   │
 │   ├── 📂 components/
-│   │   ├── 📂 form-controls/              # Reusable form controls
-│   │   │   ├── TextInput.tsx
-│   │   │   ├── TextAreaInput.tsx
-│   │   │   ├── SelectInput.tsx
+│   │   ├── 📂 form-controls/    # Reusable form controls
+│   │   │   ├── Datepicker.tsx
 │   │   │   ├── FileInput.tsx
-│   │   │   └── FormContainer.tsx
-│   │   │
-│   │   │
-│   │   │
-│   │   ├──  📂 pages/                 # Main application pages
-│   │   │   ├── Header.tsx
+│   │   │   ├── FormContainer.tsx
+│   │   │   ├── MultiSelectInput.tsx
+│   │   │   ├── SelectInput.tsx
+│   │   │   ├── TextAreaInput.tsx
+│   │   │   └── TextInput.tsx
+│   │   ├── 📂 pages/            # Main application pages
+│   │   │   ├── About.tsx
+│   │   │   ├── Approval.tsx
 │   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Home.tsx
 │   │   │   ├── Login.tsx
-│   │   │   ├── Registration.tsx
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── OnboardingWorkBuddy.tsx
+│   │   │   ├── Logout.tsx
 │   │   │   ├── OnboardingClient.tsx
-│   │   │   └── Approval.tsx
-│   │   │
-│   │   │ 
-│   │   │ 
-│   │   │ 
-│   │   │ 
-│   │   │ 
-│   │ 
-│   │ 
-│   │ 
-│   ├── 📂 tests/                 # Component & page test cases
-│   │   ├── components/
-│   │   │   ├── TextInput.test.tsx
-│   │   │   ├── TextAreaInput.test.tsx
-│   │   │   ├── SelectInput.test.tsx
-│   │   │   ├── FileInput.test.tsx
-│   │   │   └── FormContainer.test.tsx
-│   │   ├── pages/
-│   │   │   ├── Login.test.tsx
-│   │   │   ├── Registration.test.tsx
-│   │   │   ├── OnboardingClient.test.tsx
-│   │   │   └── Approval.test.tsx
-│   │
+│   │   │   ├── OnboardingWorkBuddy.tsx
+│   │   │   ├── Profile.tsx
+│   │   │   └── Registration.tsx
+│   │   ├── 📂 dashboard/        # Dashboard components
+│   │   │   ├── AdminDashboard.tsx
+│   │   │   ├── ClientProfile.tsx
+│   │   │   ├── PendingActions.tsx
+│   │   │   └── UserTable.tsx
+│   │   └── 📂 types/            # Type definitions
+│   │       └── Client.ts
+│   ├── 📂 HomePage/             # Homepage components
+│   │   ├── Home.tsx
+│   │   └── 📂 home/
+│   │       ├── ConsultationModal.tsx
+│   │       ├── DemoRequestModal.tsx
+│   │       ├── Footer.tsx
+│   │       ├── GradientCTA.tsx
+│   │       ├── HeroSection.tsx
+│   │       ├── ProductsListing.tsx
+│   │       └── StatsSection.tsx
+│   ├── 📂 routes/               # Routing components
+│   │   ├── PrivateRoutes.tsx
+│   │   ├── RoleRoutes.tsx
+│   │   ├── Unauthorized.tsx
+│   │   └── routes.tsx
 │   ├── App.tsx
 │   ├── index.tsx
-│   ├── react-app-env.d.ts
-│   ├── routes.tsx               # App routing
-│   └── setupTests.ts            # Jest setup (RTL + jest-dom)
+│   ├── setupTests.ts            # Jest setup (RTL + jest-dom)
+│   └── test-utils.tsx           # Test utilities
 │
 ├── .gitignore
 ├── package.json

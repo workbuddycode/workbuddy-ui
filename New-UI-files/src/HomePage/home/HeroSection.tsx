@@ -1,7 +1,19 @@
 import React from "react";
+import ImageCarousel from "../../components/common/ImageCarousel";
+import hero1 from "../../assets/images/HeroImage_Global.png";
+import hero2 from "../../assets/images/HeroImage_Indian.png";
+import hero5 from "../../assets/images/Hero_TeamMeeting.png";
+import hero6 from "../../assets/images/Hero_Tea_Meeting.png";
 import { Button } from "react-bootstrap";
 import DemoRequestModal from "./DemoRequestModal";
 import ConsultationModal from "./ConsultationModal";
+
+const images = [
+  hero1,
+  hero2,
+  hero5,
+  hero6
+];
 
 const HeroSection: React.FC = () => {
   const [showDemo, setShowDemo] = React.useState(false);
@@ -9,15 +21,18 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <section id="hero" className="hero-section py-5">
-        <div className="container d-flex align-items-center justify-content-between">
-          <div style={{ maxWidth: "520px" }}>
-            <h1 className="fw-bold mb-3">
-              Welcome to the <span className="text-primary">WorkBuddyHR</span> side.
-            </h1>
+    <section className="hero-section py-5">
+      <div className="container">
+        <div className="row align-items-center">
 
-            <p className="text-muted mb-4">
-              The most trusted full-suite HRMS for your people operations.
+          {/* LEFT CONTENT */}
+          <div className="col-md-6">
+            <h1 className="fw-bold">
+              Welcome to <span className="text-primary">WorkBuddyHR</span>
+            </h1>
+            <p className="text-muted mt-3">
+              The most trusted HRMS for businesses to manage people,
+              payroll, attendance, and growth.
             </p>
 
             <div className="d-flex gap-3">
@@ -34,14 +49,15 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7"
-            alt="HRMS"
-            className="rounded-pill shadow"
-            style={{ width: "420px", height: "300px", objectFit: "cover" }}
-          />
+          {/* RIGHT CAROUSEL */}
+          <div className="col-md-6">
+            <ImageCarousel
+              images={images}
+            />
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <DemoRequestModal
         show={showDemo}

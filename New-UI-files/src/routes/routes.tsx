@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoutes";
 import RoleRoute from "./RoleRoutes";
 import ClientProfile from "../components/pages/dashboard/ClientProfile";
 import { mockClients } from "../components/pages/types/mock-data/mockClients";
+import Careers from "../components/pages/Careers";
 
 export default function AppRoutes() {
   return (
@@ -24,12 +25,13 @@ export default function AppRoutes() {
       <Route path="/" element={<App />}>
 
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
 
         {/* Public */}
         <Route path="register" element={<Registration />} />
         <Route path="login" element={<Login />} />
         <Route path="home" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="careers" element={<Careers />} />
         <Route path="logout" element={<Logout />} />
         {/* Protected */}
         <Route

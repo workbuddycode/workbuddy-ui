@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, OverlayTrigger, Popover } from "react-bootstrap";
 import { List } from "react-bootstrap-icons";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import ComingSoonModal from "../../HomePage/home/ComingSoon";
 
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -10,11 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const location = useLocation();
-
-  const isHomePage = location.pathname === "/";
-  const hideRightActions = ["/", "/login", "/register", "/onboard/client"].includes(
-    location.pathname
-  );
+  const navigate = useNavigate();
 
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user")!)
@@ -22,6 +19,41 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
   const isLoggedIn = !!user;
   const userRole = user?.role || "User";
+
+  const [showComingSoon, setShowComingSoon] = useState(false);
+
+  /* ---------------- PAGE CONTEXT ---------------- */
+
+  const publicNavPages = ["/", "/about", "/careers"];
+  const isPublicNav = publicNavPages.includes(location.pathname);
+  const isHomePage = location.pathname === "/";
+
+  /* ---------------- SMART NAV HELPERS ---------------- */
+
+  const goHomeAndScroll = (scrollTo?: "top" | "products" | "support") => {
+    if (!isHomePage) {
+      navigate("/");
+      setTimeout(() => {
+        performScroll(scrollTo);
+      }, 100);
+    } else {
+      performScroll(scrollTo);
+    }
+  };
+
+  const performScroll = (scrollTo?: "top" | "products" | "support") => {
+    if (scrollTo === "products") {
+      document
+        .getElementById("products")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (scrollTo === "support") {
+      document
+        .getElementById("support")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   /* ---------------- Popovers ---------------- */
 
@@ -49,40 +81,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
     </Popover>
   );
 
-  /* ---------------- Scroll Helpers ---------------- */
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const scrollToProducts = () => {
-    document
-      .getElementById("products")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const scrollToFooter = () => {
-    document
-      .getElementById("support")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   /* ---------------- Render ---------------- */
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm fixed-header">
-      
-      {/* LEFT */}
-      <div className="d-flex align-items-center">
-        {!isHomePage && (
-          <button
-            className="btn btn-outline-secondary me-2"
-            onClick={onMenuClick}
-          >
-            <List size={20} />
-          </button>
-        )}
 
+      {/* LEFT BRAND */}
+      <div className="d-flex align-items-center">
         <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
           <img
             src={logo}
@@ -93,35 +98,38 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         </Link>
       </div>
 
-      {/* CENTER NAV (HOME PAGE ONLY) */}
-      {isHomePage && (
+      {/* CENTER NAV – PUBLIC STYLE */}
+      {isPublicNav && (
         <div className="mx-auto d-flex align-items-center gap-4 fw-medium">
+
           <button
             className="nav-link btn btn-link text-dark p-0"
-            onClick={scrollToTop}
+            onClick={() => goHomeAndScroll("top")}
           >
             Home
           </button>
 
           <button
             className="nav-link btn btn-link text-dark p-0"
-            onClick={scrollToProducts}
+            onClick={() => goHomeAndScroll("products")}
           >
             Products
           </button>
 
-          <Link className="nav-link text-dark" to="/pricing">
+          <button
+            className="nav-link btn btn-link text-dark p-0"
+            onClick={() => setShowComingSoon(true)}
+          >
             Pricing
-          </Link>
+          </button>
 
           <button
             className="nav-link btn btn-link text-dark p-0"
-            onClick={scrollToFooter}
+            onClick={() => goHomeAndScroll("support")}
           >
             Support
           </button>
 
-          {/* LOGIN BUTTON (ONLY IF NOT LOGGED IN) */}
           {!isLoggedIn && (
             <Link to="/login" className="btn btn-outline-primary btn-sm ms-3">
               Login
@@ -130,45 +138,42 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         </div>
       )}
 
-      {/* RIGHT ACTIONS (NON-HOME PAGES ONLY) */}
-      {!hideRightActions && !isHomePage && (
+      {/* RIGHT NAV – APP STYLE */}
+      {isLoggedIn && !isPublicNav && (
         <div className="ms-auto d-flex align-items-center gap-3">
-          <OverlayTrigger
-            trigger="click"
-            placement="bottom"
-            overlay={activitiesPopover}
-            rootClose
-          >
+
+          <OverlayTrigger trigger="click" placement="bottom" overlay={activitiesPopover} rootClose>
             <button className="btn btn-outline-primary btn-sm">
               Activities
             </button>
           </OverlayTrigger>
 
-          <OverlayTrigger
-            trigger="click"
-            placement="bottom"
-            overlay={notificationsPopover}
-            rootClose
-          >
+          <OverlayTrigger trigger="click" placement="bottom" overlay={notificationsPopover} rootClose>
             <button className="btn btn-outline-warning btn-sm">
               Notifications
             </button>
           </OverlayTrigger>
 
           <Dropdown align="end">
-            <Dropdown.Toggle
-              variant="light"
-              className="d-flex align-items-center"
-            >
+            <Dropdown.Toggle variant="light">
               {userRole}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-              <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/logout">Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
+      )}
+
+      {/* COMING SOON MODAL */}
+      {showComingSoon && (
+        <ComingSoonModal
+          title="Coming Soon!"
+          description="We're working on our pricing plans. Stay tuned!"
+          onClose={() => setShowComingSoon(false)}
+        />
       )}
     </nav>
   );

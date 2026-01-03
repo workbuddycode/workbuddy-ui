@@ -76,19 +76,6 @@ const ConsultationModal: React.FC<Props> = ({ show, onClose }) => {
             error={errors.phone?.message}
           />
 
-          <SelectInput
-            label="Consultation Type"
-            name="consultationType"
-            register={register}
-            options={[
-              "HR Process Setup",
-              "Payroll & Compliance",
-              "HRMS Implementation",
-              "Custom Requirement",
-            ]}
-            error={errors.consultationType?.message}
-          />
-
           <TextAreaInput
             label="Tell us about your requirement"
             name="message"

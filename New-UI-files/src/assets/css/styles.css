@@ -118,3 +118,128 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* carousel compoennt  */
+.hero-carousel {
+  border-radius: 10%;
+}
+
+.hero-carousel .carousel-inner {
+  border-radius: 10%;
+}
+
+.hero-carousel img {
+  border-radius: 10%;
+}
+
+/* Coming Soon component */
+/* Backdrop */
+.coming-soon-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Card */
+.coming-soon-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 32px 28px;
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: scaleIn 0.25s ease;
+}
+
+/* Icon */
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2b5cff, #8a2bff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 0 auto;
+}
+
+/* Button */
+.gradient-btn {
+  background: linear-gradient(135deg, #2b5cff, #8a2bff);
+  border: none;
+  color: #fff;
+  padding: 10px 26px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.gradient-btn:hover {
+  opacity: 0.9;
+}
+
+/* Animation */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Layout styles */
+
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 24px;
+  background: #0b2545;
+}
+
+.sidebar {
+  width: 240px;
+  background: #071c34;
+  padding: 20px;
+  color: #fff;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #cfd8e3;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background: #0d3b66;
+  color: #4dd0e1;
+  border-radius: 6px;
+}
+
+.carousel-control-prev {
+  left: -20px !important;
+}
+
+.carousel-control-next {
+  right: -20px !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+  background-size: 50%;
+  border-radius: 40%;
+  width: 30px;
+  height: 30px;
+}

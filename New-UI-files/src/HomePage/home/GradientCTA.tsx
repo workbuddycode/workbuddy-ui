@@ -24,13 +24,13 @@ const GradientCTA: React.FC = () => {
           Business
         </p>
 
-        <Button
+        {/* <Button
           variant="light"
           size="lg"
           onClick={() => setShowModal(true)}
         >
           Start a WorkBuddyHR Free Account
-        </Button>
+        </Button> */}
       </section>
 
       {/* MODAL */}
