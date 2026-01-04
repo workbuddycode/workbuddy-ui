@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Tabs, Tab, Form } from "react-bootstrap";
-import UserTable from "./UserTable";
 import { useNavigate } from "react-router-dom";
 import { Client } from "../types/Client";
 import { mockClients } from "../types/mock-data/mockClients";
@@ -9,82 +7,120 @@ import { mockClients } from "../types/mock-data/mockClients";
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
-  // ===== MOCK CLIENT DATA =====
+  const [clients] = useState<Client[]>(mockClients);
 
-  const [clients, setClients] = useState<Client[]>(mockClients);
+  const pending = clients.filter(c => c.status === "PENDING");
+  const approved = clients.filter(c => c.status === "ACTIVE");
+  const rejected = clients.filter(c => c.status === "REJECTED");
 
-const pending = clients.filter(c => c.status === "PENDING");
-const active = clients.filter(c => c.status === "ACTIVE");
-const rejected = clients.filter(c => c.status === "REJECTED");
-
-
-  const [searchPending, setSearchPending] = useState("");
-  const [searchActive, setSearchActive] = useState("");
-  const [searchRejected, setSearchRejected] = useState("");
-
-  const handleReview = (client: Client) => {
+  const goToClient = (client: Client) => {
     navigate(`/client-profile/${client.id}`, { state: client });
   };
 
+
   return (
-    <div className="container mt-4">
+    <div className="dashboard-container">
 
-      {/* -------- Pending Approvals Table -------- */}
-      <h4>Pending Approvals</h4>
+      {/* ================= HEADER ================= */}
+      <div className="dashboard-header card">
+        <div>
+          <h3>Registration Requests Dashboard</h3>
+          <p className="text-muted">
+            Manage customer registration requests
+          </p>
+        </div>
 
-      <Form.Control
-        type="text"
-        placeholder="Search pending..."
-        className="mb-3"
-        value={searchPending}
-        onChange={(e) => setSearchPending(e.target.value)}
-      />
+        <div className="header-actions">
+          <button className="btn btn-purple">
+            👤 User Management
+          </button>
 
-      <UserTable
-        users={pending.filter(c =>
-          c.orgName.toLowerCase().includes(searchPending.toLowerCase())
-        )}
-        showAction
-        actionLabel="Review"
-        onActionClick={(client) => handleReview(client)}
-      />
+          <button
+            className="btn btn-primary d-flex align-items-center gap-2"
+            onClick={() => navigate("/onboard/workbuddy")}
+          >
+            <span>+</span> Onboard New Client
+          </button>
+        </div>
+      </div>
 
-      <hr />
+      {/* ================= STATS ================= */}
+      <div className="stats-grid">
 
-      {/* -------- Tabs: Active / Rejected -------- */}
-      <Tabs defaultActiveKey="active" className="mb-4">
-        <Tab eventKey="active" title="Active Users">
-          <Form.Control
-            type="text"
-            placeholder="Search active..."
-            className="my-3"
-            value={searchActive}
-            onChange={(e) => setSearchActive(e.target.value)}
-          />
+        <div className="stat-card pending">
+          <span>Pending Requests</span>
+          <h2>{pending.length}</h2>
+        </div>
 
-          <UserTable
-            users={active.filter(c =>
-              c.orgName.toLowerCase().includes(searchActive.toLowerCase())
-            )}
-          />
-        </Tab>
+        <div className="stat-card approved">
+          <span>Approved Requests</span>
+          <h2>{approved.length}</h2>
+        </div>
 
-        <Tab eventKey="rejected" title="Rejected Users">
-          <Form.Control
-            type="text"
-            placeholder="Search rejected..."
-            className="my-3"
-            value={searchRejected}
-            onChange={(e) => setSearchRejected(e.target.value)}
-          />
+        <div className="stat-card rejected">
+          <span>Rejected Requests</span>
+          <h2>{rejected.length}</h2>
+        </div>
 
-          <UserTable
-            users={rejected.filter(c =>
-              c.orgName.toLowerCase().includes(searchRejected.toLowerCase())
-            )}
-          />
-        </Tab>
-      </Tabs>
+      </div>
+
+      {/* ================= REQUEST LISTS ================= */}
+      <div className="requests-grid">
+
+        {/* Pending */}
+        <div className="request-card">
+          <h5 className="pending-title">
+            ⏳ Pending Requests
+          </h5>
+
+          {pending.map(c => (
+            <div
+              key={c.id}
+              className="request-item"
+              onClick={() => goToClient(c)}
+            >
+              {c.orgName}
+            </div>
+          ))}
+        </div>
+
+        {/* Approved */}
+        <div className="request-card">
+          <h5 className="approved-title">
+            ✅ Approved Requests
+          </h5>
+
+          {approved.map(c => (
+            <div
+              key={c.id}
+              className="request-item"
+              onClick={() => goToClient(c)}
+            >
+              {c.orgName}
+            </div>
+          ))}
+
+        </div>
+
+        {/* Rejected */}
+        <div className="request-card">
+          <h5 className="rejected-title">
+            ❌ Rejected Requests
+          </h5>
+
+          {rejected.map(c => (
+            <div
+              key={c.id}
+              className="request-item"
+              onClick={() => goToClient(c)}
+            >
+              {c.orgName}
+            </div>
+          ))}
+
+        </div>
+
+      </div>
     </div>
   );
 };
