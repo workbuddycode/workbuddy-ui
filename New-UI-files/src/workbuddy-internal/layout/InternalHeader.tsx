@@ -3,7 +3,6 @@ import { Dropdown, OverlayTrigger, Popover } from "react-bootstrap";
 import { List } from "react-bootstrap-icons";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import ComingSoonModal from "../../HomePage/home/ComingSoon";
 
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -20,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const isLoggedIn = !!user;
   const userRole = user?.role || "User";
 
-  const [showComingSoon, setShowComingSoon] = useState(false);
+  // const [showComingSoon, setShowComingSoon] = useState(false);
 
   /* ---------------- PAGE CONTEXT ---------------- */
 
@@ -85,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm fixed-header">
-
+      <List size={20} onClick={onMenuClick} />
       {/* LEFT BRAND */}
       <div className="d-flex align-items-center">
         <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
@@ -116,12 +115,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             Products
           </button>
 
-          <button
+          {/* <button
             className="nav-link btn btn-link text-dark p-0"
             onClick={() => setShowComingSoon(true)}
           >
             Pricing
-          </button>
+          </button> */}
 
           <button
             className="nav-link btn btn-link text-dark p-0"
@@ -168,13 +167,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
       )}
 
       {/* COMING SOON MODAL */}
-      {showComingSoon && (
+      {/* {showComingSoon && (
         <ComingSoonModal
           title="Coming Soon!"
           description="We're working on our pricing plans. Stay tuned!"
           onClose={() => setShowComingSoon(false)}
         />
-      )}
+      )} */}
     </nav>
   );
 };

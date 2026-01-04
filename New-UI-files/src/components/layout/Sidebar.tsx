@@ -1,18 +1,45 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Sidebar: React.FC = () => {
-  return (
-    <aside className="sidebar">
-      <h6 className="sidebar-title">My Desk</h6>
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-      <NavLink to="/attendance">Attendance Hub</NavLink>
-      <NavLink to="/leave">Leave Planner</NavLink>
-      <NavLink to="/asset">Asset</NavLink>
-      <NavLink to="/timesheet">Timesheet</NavLink>
-      <NavLink to="/hr-drive">HR Drive</NavLink>
-      <NavLink to="/help-desk">Help Desk</NavLink>
-    </aside>
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  return (
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
+
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+        <h6 className="sidebar-title">My Desk</h6>
+
+        <NavLink to="/attendance" onClick={onClose}>
+          Attendance Hub
+        </NavLink>
+
+        <NavLink to="/leave" onClick={onClose}>
+          Leave Planner
+        </NavLink>
+
+        <NavLink to="/asset" onClick={onClose}>
+          Asset
+        </NavLink>
+
+        <NavLink to="/timesheet" onClick={onClose}>
+          Timesheet
+        </NavLink>
+
+        <NavLink to="/hr-drive" onClick={onClose}>
+          HR Drive
+        </NavLink>
+
+        <NavLink to="/help-desk" onClick={onClose}>
+          Help Desk
+        </NavLink>
+      </aside>
+    </>
   );
 };
 

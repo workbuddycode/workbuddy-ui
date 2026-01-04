@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Tabs, Tab, Form } from "react-bootstrap";
-import UserTable from "../dashboard/UserTable";
+import UserTable from "./UserTable";
 import { useNavigate } from "react-router-dom";
 import { Client } from "../types/Client";
 import { mockClients } from "../types/mock-data/mockClients";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import ConsultationModal from "./ConsultationModal";
+import ConsultationModal from "../modals/ConsultationModal";
 
 const GradientCTA: React.FC = () => {
   const [showModal, setShowModal] = useState(false);

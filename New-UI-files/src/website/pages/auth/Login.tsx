@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextInput from "../form-controls/TextInput";
+import TextInput from "../../../components/form-controls/TextInput";
 import { useNavigate } from "react-router-dom";
-import API from "../../api/RestApi";
+import API from "../../../api/RestApi";
+import { redirectAfterLogin } from "../../../utils/authRedirect";
 
 interface LoginForm {
   email: string;
@@ -23,6 +24,14 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      redirectAfterLogin(JSON.parse(user), navigate);
+    }
+  }, [navigate]);
+
+
   const onSubmit = async (data: LoginForm) => {
     try {
       const response = await fetch(API.LOGIN_USER, {
@@ -39,11 +48,7 @@ const Login: React.FC = () => {
       localStorage.setItem("user", JSON.stringify(result));
 
       // Redirect based on role
-      if (result.role === "ADMIN") {
-        navigate("/dashboard");
-      } else {
-        navigate("/profile");
-      }
+      redirectAfterLogin(result, navigate);
 
     } catch (error: any) {
       alert(error.message);

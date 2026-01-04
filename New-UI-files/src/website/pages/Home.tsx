@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "./home/HeroSection";
-import StatsSection from "./home/StatsSection";
-import GradientCTA from "./home/GradientCTA";
-import Footer from "./home/Footer";
-import ProductsListing from "./home/ProductsListing";
+import HeroSection from "./HeroSection";
+// import StatsSection from "../../HomePage/home/StatsSection";
+import GradientCTA from "./GradientCTA";
+import Footer from "./Footer";
+import ProductsListing from "./ProductsListing";
 const Home: React.FC = () => {
   return (
     <>

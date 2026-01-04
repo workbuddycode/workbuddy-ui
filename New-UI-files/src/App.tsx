@@ -1,7 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './components/pages/Header';
-import Footer from './components/pages/Footer';
+import Header from './workbuddy-internal/layout/InternalHeader';
+import Footer from './workbuddy-internal/layout/Footer';
+// import Header from './components/pages/Header';
+// import Footer from './components/pages/Footer';
 
 const App: React.FC = () => {
   return (

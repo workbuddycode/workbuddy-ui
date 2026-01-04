@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextInput from "../form-controls/TextInput";
-import SelectInput from "../form-controls/SelectInput";
-import API from "../../api/RestApi";
+import TextInput from "../../../components/form-controls/TextInput";
+import SelectInput from "../../../components/form-controls/SelectInput";
+import API from "../../../api/RestApi";
 import { useNavigate } from "react-router-dom";
 
 interface RegistrationForm {

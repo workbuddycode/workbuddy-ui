@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Header from "./Header";
+import Header from "./InternalHeader";
 
 describe("Header", () => {
   it("calls onMenuClick when hamburger is clicked", () => {

@@ -2,9 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextInput from "../form-controls/TextInput";
-import TextAreaInput from "../form-controls/TextAreaInput";
-import FileInput from "../form-controls/FileInput";
+import TextInput from "../components/form-controls/TextInput";
+import FileInput from "../components/form-controls/FileInput";
 
 // Validation Schema
 const schema = yup.object({

@@ -5,8 +5,8 @@ import hero2 from "../../assets/images/HeroImage_Indian.png";
 import hero5 from "../../assets/images/Hero_TeamMeeting.png";
 import hero6 from "../../assets/images/Hero_Tea_Meeting.png";
 import { Button } from "react-bootstrap";
-import DemoRequestModal from "./DemoRequestModal";
-import ConsultationModal from "./ConsultationModal";
+import DemoRequestModal from "../modals/DemoRequestModal";
+import ConsultationModal from "../modals/ConsultationModal";
 
 const images = [
   hero1,

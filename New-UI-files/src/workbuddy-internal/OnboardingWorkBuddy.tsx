@@ -2,14 +2,14 @@ import React from "react";
 import { useForm, Resolver } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextInput from "../form-controls/TextInput";
-import TextAreaInput from "../form-controls/TextAreaInput";
-import MultiSelectInput from "../form-controls/MultiSelectInput";
-import FormLayout from "../form-controls/FormLayout";
-import Datepicker from "../form-controls/Datepicker";
-import API from "../../api/RestApi";
-import FileInput from "../form-controls/FileInput";
-import SelectInput from "../form-controls/SelectInput";
+import FormLayout from "../components/form-controls/FormLayout";
+import TextInput from "../components/form-controls/TextInput";
+import SelectInput from "../components/form-controls/SelectInput";
+import Datepicker from "../components/form-controls/Datepicker";
+import MultiSelectInput from "../components/form-controls/MultiSelectInput";
+import TextAreaInput from "../components/form-controls/TextAreaInput";
+import FileInput from "../components/form-controls/FileInput";
+import API from "../api/RestApi";
 
 // ---------------- Validation Schema ----------------
 const schema = yup.object().shape({
