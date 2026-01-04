@@ -404,3 +404,37 @@ body {
     gap: 12px;
   }
 }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+}
+
+.icon-btn {
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  opacity: 0.75;
+}
+
+.icon-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  font-size: 10px;
+}
+
+/* Hide hamburger by default (desktop) */
+.mobile-only {
+  display: none;
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 991.98px) {
+  .mobile-only {
+    display: inline-flex;
+  }
+}
