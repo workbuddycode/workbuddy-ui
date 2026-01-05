@@ -12,10 +12,10 @@ const InternalLayout: React.FC = () => {
       <InternalHeader onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="internal-body">
-        <Sidebar
+        {/* <Sidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
-        />
+        /> */}
 
         <main className="internal-content">
           <Outlet />
